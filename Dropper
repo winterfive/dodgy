@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Dropper : MonoBehaviour
+{
+    MeshRenderer renderer;
+    Rigidbody dropperRB;
+    [SerializeField] float timeToWait = 6f;
+    
+    void Start()
+    {
+        renderer = GetComponent<MeshRenderer>();
+        dropperRB = GetComponent<Rigidbody>();
+
+        renderer.enabled = false;
+        dropperRB.useGravity = false;
+    }
+    void Update()
+    {
+        //Debug.Log("Time Passed: " + Time.time);
+        if(Time.time > timeToWait)
+        {
+            renderer.enabled = true;
+            dropperRB.useGravity  = true;
+        }
+    }
+}
